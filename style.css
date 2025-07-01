@@ -1,0 +1,22 @@
+/* Ensure mobile side menu is hidden by default and animates in/out */
+#sideMenu {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+* {box-sizing:border-box}
+
+/* Apply sans-serif to everything by default */
+body {
+  font-family: sans-serif;
+}
+
+/* Use Georgia only for h1 and h2 */
+h1, h2, h3 {
+  font-family: Georgia, serif;
+}
+h4 {
+  font-family: Georgia;
+  font-size:larger;
+  font-weight: 600;
+  line-height:100%;
+}
