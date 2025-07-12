@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Optional: Auto-popup after 5 seconds (comment out if not needed)
-      setTimeout(openModal, 50000);
+      setTimeout(openModal, 80000);
     })
     .catch((err) => console.error(err));
 });

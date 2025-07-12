@@ -6,13 +6,15 @@
 * {box-sizing:border-box}
 
 /* Apply sans-serif to everything by default */
-body {
+body { 
   font-family: sans-serif;
+  color: rgb(13, 13, 13);
 }
 
 /* Use Georgia only for h1 and h2 */
 h1, h2, h3 {
   font-family: Georgia, serif;
+  font-weight: 800;
 }
 h4 {
   font-family: Georgia;

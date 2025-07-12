@@ -225,43 +225,80 @@
             </div>
           </li>
         </ul>
-   
-        <div class="flex items-center ms-2">
-       
-
+    <div class="flex items-center ms-2">
   <button id="EnqueryForm" class="px-7 ml-4 mr-4 py-2.5 hidden lg:flex cursor-pointer  items-center border rounded-full border-gray-500 gap-2
-           text-white bg-sky-500 hover:bg-gray-500 shadow-inner shadow-white"> Enquery <img src="./images/icons/chat-white.png " alt="" class="w-5"> </button>
-
+           text-white bg-sky-500 hover:bg-gray-500 shadow-inner shadow-white"> 
+           Enquery <img src="./images/icons/chat-white.png " alt="" class="w-5"> </button>
+    </div>
 <!----------------------mobile menu--------------------------------------------------------->
-         <button class="block md:hidden ml-3" onclick="openMenu()"> 
+<button class="block md:hidden ml-3" onclick="openMenu()"> 
              <img src="./images/menu-black.png" alt="" class="w-8">
-         </button>
-
-        </div>
-
-
-        <ul id="sideMenu" class="md:hidden flex flex-col gap-4  py-20 px-7 fixed right-0 top-0 bottom-0 w-64 z-50 h-screen text-blue-800 bg-linear-to-tl from-green-50 via-purple-100 to-blue-100 inset-shadow-sm overflow-y-auto" style="transform: translateX(100%); transition: transform 0.4s cubic-bezier(.4,0,.2,1);">
-
-          <div class="absolute right-6 top-6" onclick="closeMenu()">
-            <img src="./images/close-black.png" alt="" class="w-7 cursor-pointer">
-          </div>
-
-            <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-            <li><a href="about.html" onclick="closeMenu()">About</a></li>
-            <li><a href="services.html" onclick="closeMenu()">Services</a></li>
-            <li><a href="library.html" onclick="closeMenu()">Library</a></li>
-            <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
-            <li><a href="team.html" onclick="closeMenu()">Team</a></li>
-
+</button>
+   
+<ul id="sideMenu" class="md:hidden flex h-[100%] flex-col gap-4 p-20 px-7 fixed right-0 top-0 bottom-0 w-64 z-50  text-blue-800 bg-linear-to-tl from-green-50 via-purple-100 to-blue-100 inset-shadow-sm overflow-y-auto" 
+style="right:0; left:auto; transform: translateX(100%); transition: transform 0.4s cubic-bezier(.4,0,.2,1);">
+  <div class="absolute left-6 top-6" onclick="closeMenu()">
+    <img src="./images/Logo.png" alt="" class="w-11 cursor-pointer">
+  </div>
+  <div class="absolute right-6 top-6" onclick="closeMenu()">
+    <img src="./images/close-black.png" alt="" class="w-9 cursor-pointer">
+  </div>
+  <li><a href="index.html" class="my-2" onclick="closeMenu()">Home</a></li>
+  <li class="relative group my-2">
+    <button onclick="toggleMobileSubmenu('about-submenu')" class="flex items-center w-full justify-between py-2 px-2 rounded hover:bg-blue-100 focus:outline-none">
+      <span>About</span>
+      <svg class="w-4 h-4 ml-2 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <ul id="about-submenu" class="hidden flex-col bg-blue-50 rounded shadow-md mt-1 ml-2 max-h-72 overflow-y-auto">
+      <li><a href="about.html" onclick="closeMenu()" class="block px-4 py-2 hover:bg-blue-200 rounded">Know More About Us</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Our Company</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Our Management Team</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Our Clients & Testimonials</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Contact Us</a></li>
+    </ul>
+  </li>
+  <li class="relative group my-2">
+    <button onclick="toggleMobileSubmenu('services-submenu')" class="flex items-center w-full justify-between py-2 px-2 rounded hover:bg-blue-100 focus:outline-none">
+      <span>Services</span>
+      <svg class="w-4 h-4 ml-2 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <ul id="services-submenu" class="hidden flex-col bg-blue-50 rounded shadow-md mt-1 ml-2 max-h-72 overflow-y-auto">
+      <li><a href="services.html" onclick="closeMenu()" class="block px-4 py-2 hover:bg-blue-200 rounded">Explore All Services</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Compliance Internal Audit</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Shop & Est. Compliances</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Payroll Processing & Compliance</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Factory License Compliance</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Vendor Compliance Services</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Mines Compliance Services</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">EPF & ESIC Regulation, Compliance</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Other Labour Law compliance</a></li>
+    </ul>
+  </li>
+  <li class="relative group my-2">
+    <button onclick="toggleMobileSubmenu('library-submenu')" class="flex items-center w-full justify-between py-2 px-2 rounded hover:bg-blue-100 focus:outline-none">
+      <span>E-Library</span>
+      <svg class="w-4 h-4 ml-2 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+    <ul id="library-submenu" class="hidden my-2 flex-col bg-blue-50 rounded shadow-md mt-1 ml-2 max-h-72 overflow-y-auto">
+      <li><a href="library.html" onclick="closeMenu()" class="block px-4 py-2 hover:bg-blue-200 rounded">Labour Laws Library</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Revised Minimum Wages</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Labour Welfare Fund</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">2025 Holiday List</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Working Hours & Leaves</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Compliance Calender</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">EPF & ESI Benefits</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Professional Tax</a></li>
+      <li><a href="#" class="block px-4 py-2 hover:bg-blue-200 rounded">Blog</a></li>
+    </ul>
+  </li>
+  <li><a href="contact.html" onclick="closeMenu()">Contact</a></li>
+  <li><a href="team.html" onclick="closeMenu()">Team</a></li>
             <li class="mt-4 mb-2">
               <div class="align-middle text-center">
-                <a href="https://www.sankhlaconsultants.in/support/" class="font-semibold border rounded-full border-double px-7 py-2 bg-linear-to-tl from-green-50 via-purple-50 to-pink-50">Client Login </a>
+                <button id="popup-form" onclick="openPopupForm()" class="px-5 mx-auto py-2.5 flex cursor-pointer items-center border rounded-full border-gray-500 gap-2 text-white bg-sky-500 hover:bg-gray-500 shadow-inner shadow-white"> Enquery <img src="./images/icons/chat-white.png " alt="" class="w-5"> </button>
               </div>
             </li>
-            <li>
-              <button id="EnqueryForm" class="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2
-             bg-white hover:font-semibold"> Enquery <img src="./images/icons/chat-white.png" alt="" class="w-5"> </button>
-            <li>
+
               <div class="flex flex-row align-middle gap-1 size-44 justify-center">
                 <a href="https://wa.me/+917809900200"> <img src="./images/icons/whatsapp.png"></a>
                 <a href="https://www.linkedin.com/company/31561478/admin/dashboard/"><img src="./images/icons/linkedin.png"></a>
@@ -270,88 +307,120 @@
                 <a href="tel:+917809900200"><img src="./images/icons/calling.png"></a>
               </div>
             </li>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
-           
-             <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-          
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
-            <hr>
+    </ul>
 
-
-        </ul>
-    </nav>
+ </nav>
