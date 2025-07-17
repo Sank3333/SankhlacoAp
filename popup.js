@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Optional: Auto-popup after 5 seconds (comment out if not needed)
-      setTimeout(openModal, 80000);
+      // Optional: Auto-popup after 20 minutes (comment out if not needed)
+      setTimeout(openModal, 200000);
     })
     .catch((err) => console.error(err));
 });
