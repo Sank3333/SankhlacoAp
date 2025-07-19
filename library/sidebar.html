@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labour Employment Industrial</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .tab-active {
+        border: 2px solid #2563eb !important;
+        border-radius: 0.5rem !important;
+        font-weight: bold !important;
+        background: #e6edfa !important;
+        color: #22223b !important;
+      }
+      body { background: #f8fafc; }
+      .sidebar {
+        background: linear-gradient(180deg, #e0e7ff 0%, #f0fdfa 100%);
+        min-height: 80vh;
+        border-right: 1px solid #e5e7eb;
+      }
+    
+      .tab {
+        cursor: pointer;
+        padding: 0.4rem 0.5rem;
+        border: none;
+        background: none;
+        font-size: 0.9rem;
+        transition: background 0.2s, border-color 0.2s;
+        opacity: 0.8;
+        color: #6508e7;
+      }
+      .tab:hover {
+        background: #d2dbf7;
+        color: #2563eb;
+        border-radius: 0.2rem;
+        box-shadow: 0 2px 8px 0 #b9c8f880;
+        z-index: 1;
+      }
+      .footer{
+        flex: auto;
+        overflow-x: auto;
+      }
+    </style>
+</head>
+
+   <!-- Load Header -->
+  <div id="header"></div>
+  
+    <!-- Sidebar -->
+    <aside class="sidebar min-h-screen overflow-x-hidden mt-8 px-4 py-5 w-[255px]">
+      <a href="library1.html" class="text-2xl text-indigo-600 px-4 font-bold mb-4 block">Laws Library</a>
+      <nav class="flex-row flex-wrap gap-2 py-3 items-center justify-start">
+        <a class="tab inline-flex items-center gap-2 w-full" href="notification.html"><img src="../images/icons/holiday.png" alt="" class="w-7">Gazette Notifications</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="codes.html"><img src="../images/icons/court.png" alt="" class="w-7">4 Labour Codes</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="act.html"><img src="../images/icons/laws.png" alt="" class="w-7">Labour Acts</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="mw.html"><img src="../images/icons/wages.png" alt="" class="w-7">Minimum Wages</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="rules.html"><img src="../images/icons/laws.png" alt="" class="w-7">Rules</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="holiday.html"><img src="../images/icons/holiday.png" alt="" class="w-7">Holiday List</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Labour Welfare Fund</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Compliance Calendar</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">EPF & ESI Benefits</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Professional Tax</a>
+        <br>
+      </nav>
+      <br>
+      <br>
+      <br>
+      <br>
+    </aside>
+  
+   <!-- JS to include header & footer -->
+
+  <script>
+    // Add border and bold to clicked tab, remove from others
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabs = document.querySelectorAll('.sidebar nav a.tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
+          tabs.forEach(t => t.classList.remove('tab-active'));
+          this.classList.add('tab-active');
+        });
+      });
+    });
+  </script>
+
+  <script>
+    async function loadComponent(id, file) {
+      const response = await fetch(file);
+      const text = await response.text();
+      document.getElementById(id).innerHTML = text;
+    }
+    loadComponent('header', '../header.html');
+  </script>
+
+    <script src="popup.js" defer></script>
+    <script src="./script.js"></script>
+
+
+</html>

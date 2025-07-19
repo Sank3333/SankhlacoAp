@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="overflow-x-hidden bg-gradient-to-r from-indigo-50 to-teal-50 min-h-screen">
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Sidebar (fixed) -->
+  <div id="sidebar" class="fixed top-11 left-0 h-full w-56 z-4  0"></div>
+
+  <!-- Main Content -->
+  <main class="pl-60 py-20 pb-12 pr-4 min-h-screen">
+    
+    <!-- Main dynamic content goes here -->
+    <div  class="bg-white rounded shadow p-8 min-h-[60vh]">
+      <h2> Main Content Area of Rules</h2>
+
+    </div>
+
+      <!-- Footer -->
+  <div id="footer1" class="mt-12"></div>
+  </main>
+
+
+
+  <!-- JS to include header, footer, sidebar -->
+  <script>
+    async function loadComponent(id, file) {
+      const response = await fetch(file);
+      const text = await response.text();
+      document.getElementById(id).innerHTML = text;
+    }
+    loadComponent('header', '../header.html');
+    loadComponent('footer1', 'footer1.html');
+    loadComponent('sidebar', 'sidebar.html');
+    // Optional: function to load content in iframe
+    window.loadContent = function(page) {
+      var frame = document.getElementById('main-frame');
+      if (frame) frame.src = page;
+    }
+  </script>
+  <script src="popup.js" defer></script>
+  <script src="./script.js"></script>
+</body>
+</html>

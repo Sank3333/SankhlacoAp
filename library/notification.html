@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="overflow-x-hidden bg-gradient-to-r from-indigo-50 to-teal-50 min-h-screen">
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- Sidebar (fixed) -->
+  <div id="sidebar" class="fixed top-11 left-0 h-full w-[320px] z-4"></div>
+
+  <!-- Main Content -->
+  <main class="pl-[275px] py-20 pb-12 pr-4 min-h-screen">
+    
+    <!-- Main dynamic content goes here -->
+    <div  class="bg-white rounded shadow p-8 min-h-[60vh]">
+      <h2> Main Content Area of Notifications</h2>
+
+    </div>
+
+      <!-- Footer -->
+  <div id="footer1" class="mt-12"></div>
+  </main>
+
+
+
+  <!-- JS to include header, footer, sidebar -->
+  <script>
+    async function loadComponent(id, file) {
+      const response = await fetch(file);
+      const text = await response.text();
+      document.getElementById(id).innerHTML = text;
+    }
+    loadComponent('header', '../header.html');
+    loadComponent('footer1', 'footer1.html');
+    loadComponent('sidebar', 'sidebar.html').then(() => {
+      // Highlight active sidebar tab after sidebar is loaded
+      const highlightSidebarTab = () => {
+        const tabs = document.querySelectorAll('#sidebar .tab');
+        const currentAbs = new URL(window.location.pathname, window.location.origin).href;
+        tabs.forEach(tab => {
+          const href = tab.getAttribute('href');
+          if (href && href !== '#') {
+            const linkAbs = new URL(href, window.location.href).href.split('#')[0].split('?')[0];
+            if (currentAbs === linkAbs) {
+              tab.classList.add('tab-active');
+            } else {
+              tab.classList.remove('tab-active');
+            }
+          } else {
+            tab.classList.remove('tab-active');
+          }
+        });
+        // Also update on click for instant feedback
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('tab-active'));
+            this.classList.add('tab-active');
+          });
+        });
+      };
+      // Wait for sidebar HTML to be in DOM
+      setTimeout(highlightSidebarTab, 50);
+    });
+    // Optional: function to load content in iframe
+    window.loadContent = function(page) {
+      var frame = document.getElementById('main-frame');
+      if (frame) frame.src = page;
+    }
+  </script>
+  <script src="popup.js" defer></script>
+  <script src="./script.js"></script>
+</body>
+</html>
