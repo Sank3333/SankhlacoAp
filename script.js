@@ -29,7 +29,7 @@ function closeModal() {
     document.body.style.overflow = '';
   }
 }
-// Mobile menu open/close logic (fixed for full off-canvas effect)
+
 function openMenu() {
   var sideMenu = document.getElementById('sideMenu') || document.querySelector('#sideMenu');
   if (sideMenu) {
@@ -50,31 +50,11 @@ function closeMenu() {
 
 // Load header, then attach scroll effect
 loadComponent('header', 'header.html', function() {
-  setTimeout(function() {
-    const navBar = document.getElementById('mainNav');
-    if (navBar) {
-      navBar.style.transition = 'transform 0.4s cubic-bezier(.4,0,.2,1)';
-      let lastScrollY = window.scrollY;
-      let ticking = false;
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          window.requestAnimationFrame(function() {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > 50) {
-              navBar.style.transform = 'translateY(0)';
-            } else {
-              navBar.style.transform = 'translateY(0)';
-            }
-            lastScrollY = currentScrollY;
-            ticking = false;
-          });
-          ticking = true;
-        }
-
-      });
-      highlightCurrentMenu();
-    }
-  }, 0);
+  highlightCurrentMenu();
 });
+
 // Load footer
 loadComponent('footer', 'footer.html');
+loadComponent('footer1', 'footer1.html');
+
+loadComponent('sidebar', 'sidebar.html');
