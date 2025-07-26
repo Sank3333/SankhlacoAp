@@ -12,10 +12,10 @@
   <div id="header"></div>
 
   <!-- Sidebar (fixed) -->
-  <div id="sidebar" class="fixed top-11 left-0 h-full w-[320px] z-4"></div>
+  <div id="sidebar" class="fixed top-12 left-0 h-full w-56 z-4  0"></div>
 
   <!-- Main Content -->
-  <main class="pl-[275px] py-20 pb-12 pr-4 min-h-screen">
+  <main class="pl-60  py-20 pb-12 pr-4 min-h-screen">
     
     <!-- Main dynamic content goes here -->
     <div  class="bg-white rounded shadow p-8 min-h-[60vh]">
@@ -38,34 +38,40 @@
     }
     loadComponent('header', '../header.html');
     loadComponent('footer1', 'footer1.html');
+    loadComponent('sidebar', 'sidebar.html');
+    // After sidebar loads, enable SPA-like navigation
     loadComponent('sidebar', 'sidebar.html').then(() => {
-      // Highlight active sidebar tab after sidebar is loaded
-      const highlightSidebarTab = () => {
-        const tabs = document.querySelectorAll('#sidebar .tab');
-        const currentAbs = new URL(window.location.pathname, window.location.origin).href;
+      const mainContent = document.querySelector('main > div.bg-white');
+      const sidebar = document.getElementById('sidebar');
+      if (!mainContent || !sidebar) return;
+      // Wait for sidebar HTML to be in DOM
+      setTimeout(() => {
+        const tabs = sidebar.querySelectorAll('.tab[href]:not([href="#"])');
+        function setActiveTab(tab) {
+          tabs.forEach(t => t.classList.remove('tab-active'));
+          tab.classList.add('tab-active');
+        }
         tabs.forEach(tab => {
-          const href = tab.getAttribute('href');
-          if (href && href !== '#') {
-            const linkAbs = new URL(href, window.location.href).href.split('#')[0].split('?')[0];
-            if (currentAbs === linkAbs) {
-              tab.classList.add('tab-active');
-            } else {
-              tab.classList.remove('tab-active');
-            }
-          } else {
-            tab.classList.remove('tab-active');
-          }
-        });
-        // Also update on click for instant feedback
-        tabs.forEach(tab => {
-          tab.addEventListener('click', function() {
-            tabs.forEach(t => t.classList.remove('tab-active'));
-            this.classList.add('tab-active');
+          tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            setActiveTab(tab);
+            const href = tab.getAttribute('href');
+            fetch(href)
+              .then(resp => resp.text())
+              .then(html => {
+                // Extract only the main content area from the fetched HTML
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const newContent = temp.querySelector('main > div.bg-white');
+                if (newContent) {
+                  mainContent.innerHTML = newContent.innerHTML;
+                }
+                // Update the URL in the browser without reloading
+                window.history.pushState({}, '', href);
+              });
           });
         });
-      };
-      // Wait for sidebar HTML to be in DOM
-      setTimeout(highlightSidebarTab, 50);
+      }, 50);
     });
     // Optional: function to load content in iframe
     window.loadContent = function(page) {

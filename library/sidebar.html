@@ -8,17 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       .tab-active {
-        border: 2px solid #2563eb !important;
+        border: 1px solid #2563eb !important;
         border-radius: 0.5rem !important;
-        font-weight: bold !important;
+        font-weight: 600 !important;
         background: #e6edfa !important;
-        color: #22223b !important;
+        color: #a60ade !important;
       }
       body { background: #f8fafc; }
       .sidebar {
-        background: linear-gradient(180deg, #e0e7ff 0%, #f0fdfa 100%);
+        background: linear-gradient(360deg, #e0e7ff 0%, #f0fbfd 60%);
         min-height: 80vh;
-        border-right: 1px solid #e5e7eb;
+        border-right: 0.5px #a8a4f1;
       }
     
       .tab {
@@ -49,19 +49,22 @@
   <div id="header"></div>
   
     <!-- Sidebar -->
-    <aside class="sidebar min-h-screen overflow-x-hidden mt-8 px-4 py-5 w-[255px]">
-      <a href="library1.html" class="text-2xl text-indigo-600 px-4 font-bold mb-4 block">Laws Library</a>
-      <nav class="flex-row flex-wrap gap-2 py-3 items-center justify-start">
-        <a class="tab inline-flex items-center gap-2 w-full" href="notification.html"><img src="../images/icons/holiday.png" alt="" class="w-7">Gazette Notifications</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="codes.html"><img src="../images/icons/court.png" alt="" class="w-7">4 Labour Codes</a>
+    <aside class="sidebar min-h-screen overflow-x-hidden mt-8 px-4 py-5 w-[233px]">
+      <a href="library1.html" class="text-2xl text-indigo-600 font-bold text-center mb-3 block">LAWS LIBRARY</a>
+    <div class="px-2 mb-4">
+      <hr style="border-top: 3px double #2563eb; margin: 0.2rem 0;">
+    </div>
+      <nav class="flex-row flex-wrap py-1 items-center justify-start">
+        <a class="tab inline-flex items-center gap-2 w-full" href="notification.html"><img src="../images/icons/notification.png" alt="" class="w-7">Gazette Notifications</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="codes.html"><img src="../images/icons/certificate1.png" alt="" class="w-7">4 Labour Codes</a>
         <a class="tab inline-flex items-center gap-2 w-full" href="act.html"><img src="../images/icons/laws.png" alt="" class="w-7">Labour Acts</a>
         <a class="tab inline-flex items-center gap-2 w-full" href="mw.html"><img src="../images/icons/wages.png" alt="" class="w-7">Minimum Wages</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="rules.html"><img src="../images/icons/laws.png" alt="" class="w-7">Rules</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="rules.html"><img src="../images/icons/scales-court.png" alt="" class="w-7">Rules</a>
         <a class="tab inline-flex items-center gap-2 w-full" href="holiday.html"><img src="../images/icons/holiday.png" alt="" class="w-7">Holiday List</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Labour Welfare Fund</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Compliance Calendar</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">EPF & ESI Benefits</a>
-        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/holiday.png" alt="" class="w-7">Professional Tax</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/cash-box.png" alt="" class="w-7">Labour Welfare Fund</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/calendar.png" alt="" class="w-7">Compliance Calendar</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/money-yours.png" alt="" class="w-7">EPF & ESI Benefits</a>
+        <a class="tab inline-flex items-center gap-2 w-full" href="#"><img src="../images/icons/tax.png" alt="" class="w-7">Professional Tax</a>
         <br>
       </nav>
       <br>

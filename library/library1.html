@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library1</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Labour Laws Codes Library</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="overflow-x-hidden bg-gradient-to-r from-indigo-50 to-teal-50 min-h-screen">
@@ -12,15 +12,15 @@
   <div id="header"></div>
 
   <!-- Sidebar (fixed) -->
-  <div id="sidebar" class="fixed top-11 left-0 h-full w-56 z-4  0"></div>
+  <div id="sidebar" class="fixed top-12 left-0 h-screen w-56 z-4"></div>
 
   <!-- Main Content -->
   <main class="pl-60 py-20 pb-12 pr-4 min-h-screen">
     
     <!-- Main dynamic content goes here -->
-    <div  class="bg-white rounded shadow p-8 min-h-[60vh]">
-      <h2> Main Content Area of Library1</h2>
-
+    <div class="bg-white rounded shadow p-8 min-h-[60vh]">
+      <h1 style="font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; color: #2563eb; font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; letter-spacing: 1px;">E-Library</h1>
+      <h2> Main Content Area of Library</h2>
     </div>
 
       <!-- Footer -->
@@ -37,8 +37,88 @@
       document.getElementById(id).innerHTML = text;
     }
     loadComponent('header', '../header.html');
+    // Re-bind Enquery popup after header loads
+    loadComponent('header', '../header.html').then(() => {
+      setTimeout(() => {
+        const enquiryBtn = document.getElementById('EnqueryForm');
+        if (enquiryBtn) {
+          enquiryBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (typeof openModal === 'function') openModal();
+          });
+        }
+      }, 50);
+    });
     loadComponent('footer1', 'footer1.html');
     loadComponent('sidebar', 'sidebar.html');
+    // After sidebar loads, enable SPA-like navigation
+    loadComponent('sidebar', 'sidebar.html').then(() => {
+      const mainContent = document.querySelector('main > div.bg-white');
+      const sidebar = document.getElementById('sidebar');
+      if (!mainContent || !sidebar) return;
+      // Wait for sidebar HTML to be in DOM
+      setTimeout(() => {
+        const tabs = sidebar.querySelectorAll('.tab[href]:not([href="#"])');
+        function setActiveTab(tab) {
+          tabs.forEach(t => t.classList.remove('tab-active'));
+          tab.classList.add('tab-active');
+        }
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            setActiveTab(tab);
+            const href = tab.getAttribute('href');
+            fetch(href)
+              .then(resp => resp.text())
+              .then(html => {
+                // Extract only the main content area from the fetched HTML
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const newContent = temp.querySelector('main > div.bg-white');
+                if (newContent) {
+                  mainContent.innerHTML = newContent.innerHTML;
+                }
+                // Update the URL in the browser without reloading
+                window.history.pushState({}, '', href);
+              });
+          });
+        });
+      }, 50);
+    });
+    // After sidebar loads, enable SPA-like navigation
+    loadComponent('sidebar', 'sidebar.html').then(() => {
+      const mainContent = document.querySelector('main > div.bg-white');
+      const sidebar = document.getElementById('sidebar');
+      if (!mainContent || !sidebar) return;
+      // Wait for sidebar HTML to be in DOM
+      setTimeout(() => {
+        const tabs = sidebar.querySelectorAll('.tab[href]:not([href="#"])');
+        function setActiveTab(tab) {
+          tabs.forEach(t => t.classList.remove('tab-active'));
+          tab.classList.add('tab-active');
+        }
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function(e) {
+            e.preventDefault();
+            setActiveTab(tab);
+            const href = tab.getAttribute('href');
+            fetch(href)
+              .then(resp => resp.text())
+              .then(html => {
+                // Extract only the main content area from the fetched HTML
+                const temp = document.createElement('div');
+                temp.innerHTML = html;
+                const newContent = temp.querySelector('main > div.bg-white');
+                if (newContent) {
+                  mainContent.innerHTML = newContent.innerHTML;
+                }
+                // Update the URL in the browser without reloading
+                window.history.pushState({}, '', href);
+              });
+          });
+        });
+      }, 50);
+    });
     // Optional: function to load content in iframe
     window.loadContent = function(page) {
       var frame = document.getElementById('main-frame');
